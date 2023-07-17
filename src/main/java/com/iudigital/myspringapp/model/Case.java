@@ -1,5 +1,6 @@
 package com.iudigital.myspringapp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.OnDelete;
@@ -26,7 +27,7 @@ public class Case implements Serializable{
 
     private String description;
     @Column(nullable = false)
-    private LocalDateTime dateCase;
+    private LocalDate dateCase;
     @Column(nullable = false)
     private Float latitude;
     @Column(nullable = false)

@@ -101,23 +101,15 @@ public class UserServiceImpl implements IUserService {
     @Transactional
     public UserDtoResponse updateUser(Long id, UserDtoRequest userDtoRequest) {
 
-        System.out.println("Actualizando usuario");
-
         User userExist = userRepository.findById(id).orElse(null);
 
-        System.out.println(userExist);
-
         if(userExist == null){
-            System.out.println("Usuario no encontrado");
             throw new NullPointerException();
         }
 
         if(!userExist.getUserName().equals(userDtoRequest.getUserName())){
-            System.out.println("Verificando username");
             boolean existUserName = userRepository.existsByUserName(userDtoRequest.getUserName());
-            System.out.println("Existe username = " + existUserName);
             if(existUserName){
-                System.out.println("Username ya existe");
                 throw new IllegalArgumentException();
             }
 
@@ -126,14 +118,9 @@ public class UserServiceImpl implements IUserService {
 
         if(!userExist.getEmail().equals(userDtoRequest.getEmail())){
 
-            System.out.println("Verificando email");
-
            boolean existsByEmail = userRepository.existsByEmail(userDtoRequest.getEmail());
 
-            System.out.println("Existe email = " + existsByEmail);
-
             if(existsByEmail){
-                System.out.println("Email ya existe");
                 throw new IllegalArgumentException();
             }
             userExist.setEmail(userDtoRequest.getEmail());
@@ -146,22 +133,18 @@ public class UserServiceImpl implements IUserService {
             userExist.setPassword(hashedPassword);
         }
 
-        System.out.println(userDtoRequest.getEnabled());
         if(userDtoRequest.getEnabled() != null){
             userExist.setEnabled(userDtoRequest.getEnabled());
         }
 
-        System.out.println(userDtoRequest.getName());
         if (userDtoRequest.getName() != null) {
             userExist.setName(userDtoRequest.getName());
         }
 
-        System.out.println(userDtoRequest.getImage());
         if (userDtoRequest.getImage() != null) {
             userExist.setImage(userDtoRequest.getImage());
         }
 
-        System.out.println(userDtoRequest.getDateBirth());
         if (userDtoRequest.getDateBirth() != null) {
             userExist.setDateBirth(userDtoRequest.getDateBirth());
         }
