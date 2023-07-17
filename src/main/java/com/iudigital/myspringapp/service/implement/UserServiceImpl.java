@@ -5,7 +5,6 @@ import com.iudigital.myspringapp.dto.response.UserDtoResponse;
 import com.iudigital.myspringapp.model.User;
 import com.iudigital.myspringapp.repository.RoleRepository;
 import com.iudigital.myspringapp.repository.UserRepository;
-import com.iudigital.myspringapp.service.ConstantService;
 import com.iudigital.myspringapp.service.interfaces.IUserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -168,7 +167,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public String deleteUser(Long id) {
+    public void deleteUser(Long id) {
 
             User userExist = userRepository.findById(id).orElse(null);
 
@@ -178,6 +177,5 @@ public class UserServiceImpl implements IUserService {
 
             userRepository.deleteById(id);
 
-            return ConstantService.SUCCESSFULLY;
     }
 }

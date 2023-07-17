@@ -13,5 +13,5 @@ public interface IUserService {
 
     UserDtoResponse updateUser(Long id, UserDtoRequest userDtoRequest);
 
-    String deleteUser(Long id);
+    void deleteUser(Long id);
 }

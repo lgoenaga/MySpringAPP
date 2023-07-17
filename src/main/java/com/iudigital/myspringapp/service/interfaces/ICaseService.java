@@ -2,7 +2,6 @@ package com.iudigital.myspringapp.service.interfaces;
 
 import com.iudigital.myspringapp.dto.request.CaseDtoRequest;
 import com.iudigital.myspringapp.dto.response.CaseDtoResponse;
-import jakarta.validation.Valid;
 
 import java.util.List;
 
